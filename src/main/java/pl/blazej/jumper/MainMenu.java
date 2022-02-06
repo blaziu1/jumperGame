@@ -53,7 +53,6 @@ public class MainMenu extends JFrame implements ActionListener {
             }
         if (e.getSource() == this.options) {
             dispose();
-            //Options opcje = new Options();
             OptionsForm options = new OptionsForm();
         }
         if (e.getSource() == this.exit)

@@ -16,16 +16,24 @@ class Game {
 
     private int NUM_OF_FILES = 2;
 
+    /**
+     * Responsible for game's behavior after removing every block.
+     * After removing all blocks, a new map is created from the text file.
+     * If a player has cleared blocked on all available maps, a message is displayed stating that he has won.
+     */
     void nextLevel(int score) {
+        //String[] filenames = {"levels/lvl2.txt", "levels/lvl3.txt"};
         File[] files = new File[this.NUM_OF_FILES];
         files[0] = new File("levels/lvl2.txt");
         files[1] = new File("levels/lvl3.txt");
         try {
+            //Map map = new Map(filenames[map_num]);
             Map map = new Map(files[map_num]);
             map_num++;
-            EventQueue.invokeLater(() -> map.setVisible(true));
+            //EventQueue.invokeLater(() -> map.setVisible(true));
+            map.setVisible(true);
         } catch (IOException error) {
-            System.out.println("IOException");
+            System.out.println("IOException: " + error);
         } catch (ArrayIndexOutOfBoundsException err) {
             String[] options = { "Game over" };
             JPanel panel = new JPanel();

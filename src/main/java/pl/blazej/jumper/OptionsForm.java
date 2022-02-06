@@ -7,30 +7,26 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class OptionsForm extends JFrame {
-    private JButton gotoweButton;
-    private JRadioButton wiekszaSzybkoscRadioButton;
-    private JRadioButton mniejszaSzybkoscRadioButton;
-    private JRadioButton wiekszaWysokoscRadioButton;
-    private JRadioButton mniejszaWysokoscRadioButton1;
+    private JButton readyButton;
+    private JRadioButton fasterRadioButton;
+    private JRadioButton slowerRadioButton;
+    private JRadioButton heigherRadioButton;
+    private JRadioButton shorterRadioButton1;
     private JRadioButton a6RadioButton;
     private JRadioButton a3RadioButton;
     private JPanel mainPanel;
-    private int szybkosc;
+    private int speed, jumpHeight, lives;
 
-    private int wysokosc;
-
-    private int zycia;
-
-    public OptionsForm() {
+    OptionsForm() {
         setContentPane(mainPanel);
         setDefaultCloseOperation(3);
         //pack();
         setSize(485, 400);
         setLocationRelativeTo(null);
-        this.wiekszaSzybkoscRadioButton.setSelected(true);
-        this.wiekszaWysokoscRadioButton.setSelected(true);
+        this.fasterRadioButton.setSelected(true);
+        this.heigherRadioButton.setSelected(true);
         this.a6RadioButton.setSelected(true);
-        this.gotoweButton.addActionListener(new ActionListener() {
+        this.readyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 OptionsForm.this.getDane();
                 OptionsForm.this.saveDateToFile();
@@ -38,24 +34,24 @@ public class OptionsForm extends JFrame {
                 MainMenu menu = new MainMenu();
             }
         });
-        this.wiekszaSzybkoscRadioButton.addActionListener(new ActionListener() {
+        this.fasterRadioButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                OptionsForm.this.mniejszaSzybkoscRadioButton.setSelected(false);
+                OptionsForm.this.slowerRadioButton.setSelected(false);
             }
         });
-        this.mniejszaSzybkoscRadioButton.addActionListener(new ActionListener() {
+        this.slowerRadioButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                OptionsForm.this.wiekszaSzybkoscRadioButton.setSelected(false);
+                OptionsForm.this.fasterRadioButton.setSelected(false);
             }
         });
-        this.wiekszaWysokoscRadioButton.addActionListener(new ActionListener() {
+        this.heigherRadioButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                OptionsForm.this.mniejszaWysokoscRadioButton1.setSelected(false);
+                OptionsForm.this.shorterRadioButton1.setSelected(false);
             }
         });
-        this.mniejszaWysokoscRadioButton1.addActionListener(new ActionListener() {
+        this.shorterRadioButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                OptionsForm.this.wiekszaWysokoscRadioButton.setSelected(false);
+                OptionsForm.this.heigherRadioButton.setSelected(false);
             }
         });
         this.a6RadioButton.addActionListener(new ActionListener() {
@@ -72,33 +68,36 @@ public class OptionsForm extends JFrame {
     }
 
     private void getDane() {
-        if (this.wiekszaSzybkoscRadioButton.isSelected()) {
-            this.szybkosc = 5;
+        if (this.fasterRadioButton.isSelected()) {
+            this.speed = 5;
         } else {
-            this.szybkosc = 35;
+            this.speed = 35;
         }
-        if (this.wiekszaWysokoscRadioButton.isSelected()) {
-            this.wysokosc = 21;
+        if (this.heigherRadioButton.isSelected()) {
+            this.jumpHeight = 21;
         } else {
-            this.wysokosc = 18;
+            this.jumpHeight = 18;
         }
         if (this.a6RadioButton.isSelected()) {
-            this.zycia = 6;
+            this.lives = 6;
         } else {
-            this.zycia = 2;
+            this.lives = 2;
         }
     }
 
     private void saveDateToFile() {
         try {
             PrintWriter save = new PrintWriter("files/difficulty.txt");
-            save.println(this.szybkosc);
-            save.println(this.wysokosc);
-            save.println(this.zycia);
+            save.println(this.speed);
+            save.println(this.jumpHeight);
+            save.println(this.lives);
             save.close();
         } catch (IOException error) {
             System.out.println("IOException");
         }
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }

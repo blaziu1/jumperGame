@@ -36,13 +36,11 @@ public class Map extends JFrame implements KeyListener {
 
     private static int lives;
 
-    private static int score = 0;
+    static int score = 0;
 
     private Image blockImage;
 
     private Image jumperImage;
-
-
 
     private int counter = 0;
 
@@ -59,7 +57,7 @@ public class Map extends JFrame implements KeyListener {
                 MainMenu mainmenu = new MainMenu();
             }
         });
-        this.Blocks = this.load.bloki;
+        this.Blocks = this.load.blocks;
         this.jumper = new Jumper(this.load.jumper.getX() * 50, this.load.jumper.getY() * 50);
         final Game game = new Game();
         this.jumper.asc = this.load.JUMP_HEIGHT;
@@ -94,7 +92,7 @@ public class Map extends JFrame implements KeyListener {
                     }
                 }
             }
-        };
+        }
         ActionListener listener = new TimeListener();
         int delay = this.load.JUMPER_SPEED;
         this.timer = new Timer(delay, listener);
@@ -110,7 +108,7 @@ public class Map extends JFrame implements KeyListener {
             } catch (IOException error) {
                 System.out.println("Error");
             }
-            this.Blocks = this.load.bloki;
+            this.Blocks = this.load.blocks;
             lives--;
             score -= this.counter;
             this.counter = 0;

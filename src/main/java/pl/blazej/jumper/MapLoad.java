@@ -11,7 +11,7 @@ import java.util.Scanner;
 class MapLoad {
     int MAP_HEIGHT, MAP_WIDTH;
 
-    ArrayList<Block> bloki = new ArrayList<>();
+    ArrayList<Block> blocks = new ArrayList<>();
 
     Jumper jumper = new Jumper();
 
@@ -60,7 +60,7 @@ class MapLoad {
             int x = Integer.parseInt(blockString[0]) * 50;
             int y = Integer.parseInt(blockString[1]) * 50;
             Block block = new Block(x, y);
-            this.bloki.add(block);
+            this.blocks.add(block);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("ArrayIndexOutOfBoundsException");
         }
