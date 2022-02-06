@@ -1,7 +1,7 @@
 # jumperGame
 
 <p align="center">
-  <img src="../master/gifs/jumperGIF.gif" width=750 height=600/>
+  <img src="../master/gifs/jumperGIF.gif" width=500 height=400/>
 </p>
 
 ### 1. Introduction
