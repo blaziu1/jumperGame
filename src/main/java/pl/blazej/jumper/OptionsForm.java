@@ -17,7 +17,7 @@ public class OptionsForm extends JFrame {
     private JPanel mainPanel;
     private int speed, jumpHeight, lives;
 
-    OptionsForm() {
+    public OptionsForm() {
         setContentPane(mainPanel);
         setDefaultCloseOperation(3);
         //pack();
